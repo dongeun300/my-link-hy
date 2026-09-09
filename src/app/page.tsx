@@ -1,9 +1,9 @@
 export default function Home() {
   const profileLinks = [
-    { title: "GitHub 프로필", url: "https://github.com", icon: "💻", desc: "코딩 공부 및 프로젝트 기록" },
-    { title: "개발 블로그", url: "#", icon: "✍️", desc: "배운 내용과 생각 정리" },
-    { title: "인스타그램", url: "#", icon: "📸", desc: "대학 생활과 일상" },
-    { title: "이메일 문의", url: "mailto:contact@example.com", icon: "✉️", desc: "문의 및 협업 제안" },
+    { title: "GitHub 프로필", url: "https://github.com", icon: "💻", desc: "오픈소스 기여 및 프로젝트 코드 저장소" },
+    { title: "기술 블로그", url: "#", icon: "✍️", desc: "개발 트러블슈팅과 배운 점 기록" },
+    { title: "포트폴리오 / 이력서", url: "#", icon: "📄", desc: "주요 프로젝트 및 기술 스택 소개" },
+    { title: "이메일 문의", url: "mailto:contact@example.com", icon: "✉️", desc: "협업 제안 및 커피챗 요청" },
   ];
 
   return (
@@ -24,24 +24,24 @@ export default function Home() {
             홍길동
           </h1>
           <p className="text-xs font-semibold tracking-wide uppercase text-indigo-600 mb-3">
-            Vibe Coding Learner · Student
+            Frontend Developer · Web Engineer
           </p>
 
           {/* 소개글 */}
           <p className="text-slate-600 text-sm leading-relaxed break-keep mb-6">
-            안녕하세요! 바이브 코딩을 배우고 있는 대학생 입니다.
+            사용자 경험(UX)과 깔끔한 클린 코드를 지향하는 프론트엔드 개발자입니다. 일상의 크고 작은 불편을 기술로 해결하며, 지속 가능한 서비스를 만드는 것에 열정을 갖고 있습니다.
           </p>
 
           {/* 태그 목록 */}
           <div className="flex flex-wrap gap-2 justify-center mb-6">
             <span className="px-3 py-1 bg-slate-100 text-slate-600 rounded-full text-xs font-medium">
-              🌱 성장 중
+              💻 Frontend
             </span>
             <span className="px-3 py-1 bg-indigo-50 text-indigo-600 rounded-full text-xs font-medium">
-              ✨ 바이브 코딩
+              ✨ 클린 코드
             </span>
             <span className="px-3 py-1 bg-sky-50 text-sky-600 rounded-full text-xs font-medium">
-              🎓 대학생
+              🚀 문제 해결
             </span>
           </div>
 
