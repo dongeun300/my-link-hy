@@ -112,114 +112,119 @@ export default function Home() {
   ];
 
   return (
-    <div className="relative min-h-screen py-8 px-4 sm:px-6 flex flex-col items-center">
+    <div className="relative min-h-screen py-6 sm:py-10 md:py-14 px-3 sm:px-6 md:px-8 flex flex-col items-center overflow-x-hidden">
       {/* Toast Notification */}
       {toastMessage && (
-        <div className="fixed top-5 z-50 animate-bounce">
-          <div className="neo-border-thick bg-yellow-300 text-black px-5 py-2.5 font-black text-sm neo-shadow-lg flex items-center gap-2">
+        <div className="fixed top-4 sm:top-6 z-50 animate-bounce max-w-[90vw]">
+          <div className="neo-border-thick bg-yellow-300 text-black px-4 sm:px-5 py-2 sm:py-2.5 font-black text-xs sm:text-sm neo-shadow-lg flex items-center gap-2">
             <span>✦</span>
-            <span>{toastMessage}</span>
+            <span className="truncate">{toastMessage}</span>
           </div>
         </div>
       )}
 
-      {/* Main Container */}
-      <div className="w-full max-w-xl mx-auto flex flex-col gap-6">
+      {/* Main Container - scales adaptively from mobile to desktop */}
+      <div className="w-full max-w-xl md:max-w-3xl lg:max-w-5xl mx-auto flex flex-col gap-6 sm:gap-8">
         {/* Top Floating Utility Bar */}
         <header className="w-full flex items-center justify-between">
-          <div className="neo-border bg-black text-white px-3.5 py-1 text-xs font-black tracking-widest uppercase neo-shadow-sm">
+          <div className="neo-border bg-black text-white px-3 sm:px-4 py-1 sm:py-1.5 text-xs sm:text-sm font-black tracking-widest uppercase neo-shadow-sm">
             ⚡ MYLINK.HY
           </div>
           <button
             onClick={handleCopyProfile}
             type="button"
-            className="neo-border bg-white hover:bg-yellow-200 text-black px-3.5 py-1 text-xs font-black neo-shadow-sm neo-press flex items-center gap-1.5 cursor-pointer"
+            className="neo-border bg-white hover:bg-yellow-200 text-black px-3 sm:px-4 py-1 sm:py-1.5 text-xs sm:text-sm font-black neo-shadow-sm neo-press flex items-center gap-1.5 cursor-pointer"
           >
             <span>🔗</span>
-            <span>링크 공유</span>
+            <span>프로필 공유</span>
           </button>
         </header>
 
-        {/* Profile Hero Card */}
-        <section className="relative w-full bg-white neo-border-thick neo-shadow-xl p-6 sm:p-8 flex flex-col items-center text-center">
+        {/* Profile Hero Card - Responsive layout: stacked on mobile, dual column on tablet/desktop */}
+        <section className="relative w-full bg-white neo-border-thick neo-shadow-xl p-5 sm:p-8 lg:p-10 flex flex-col md:flex-row md:items-center md:gap-8 lg:gap-10">
           {/* Decorative Corner Badges */}
-          <div className="absolute -top-3.5 -right-3 neo-border bg-yellow-400 px-3 py-0.5 text-[11px] font-black uppercase rotate-3 shadow-[2px_2px_0px_#000]">
+          <div className="absolute -top-3 right-2 sm:-right-3 neo-border bg-yellow-400 px-2.5 sm:px-3 py-0.5 text-[10px] sm:text-[11px] font-black uppercase rotate-3 shadow-[2px_2px_0px_#000]">
             ★ VERIFIED DEV
           </div>
-          <div className="absolute -top-3 -left-2 neo-border bg-pink-400 px-2.5 py-0.5 text-[11px] font-black -rotate-6 shadow-[2px_2px_0px_#000]">
+          <div className="absolute -top-3 left-2 sm:-left-2 neo-border bg-pink-400 px-2 sm:px-2.5 py-0.5 text-[10px] sm:text-[11px] font-black -rotate-6 shadow-[2px_2px_0px_#000]">
             2026 VER.
           </div>
 
-          {/* Avatar Section */}
-          <div className="relative mb-5 mt-2">
-            <div className="w-28 h-28 neo-border-thick bg-gradient-to-tr from-amber-300 to-yellow-200 neo-shadow-lg flex items-center justify-center text-5xl select-none">
-              🕶️
-            </div>
-            {/* Quirky floating sticker */}
-            <span className="absolute -bottom-2 -right-3 neo-border bg-lime-400 text-black text-[11px] font-black px-2 py-0.5 rotate-6 shadow-[2px_2px_0px_#000]">
-              LV.99 🚀
-            </span>
-          </div>
-
-          {/* Status Badge */}
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-emerald-200 neo-border text-xs font-black text-black neo-shadow-sm mb-3.5 -rotate-1">
-            <span className="w-2.5 h-2.5 bg-emerald-500 rounded-full border border-black animate-ping" />
-            <span>OPEN FOR OPPORTUNITIES</span>
-          </div>
-
-          {/* Name & Headline */}
-          <h1 className="text-3xl sm:text-4xl font-black tracking-tight text-black mb-1.5">
-            홍길동
-          </h1>
-          <div className="inline-block bg-neutral-100 neo-border px-3 py-0.5 text-xs font-mono font-bold uppercase tracking-wider mb-4">
-            Frontend Engineer · UI/UX Maker
-          </div>
-
-          {/* Bio Description */}
-          <p className="text-neutral-800 text-sm sm:text-base leading-relaxed font-medium max-w-md break-keep mb-6">
-            사용자 경험(UX)과 기술적 완성도에 집착하는 엔지니어입니다.
-            거친 아이디어를{" "}
-            <span className="bg-yellow-200 px-1 border-b-2 border-black font-bold">
-              견고하고 직관적인 프로덕트
-            </span>
-            로 구현하는 것을 즐깁니다.
-          </p>
-
-          {/* Skills Stickers */}
-          <div className="flex flex-wrap gap-2 justify-center mb-6 max-w-md">
-            {skills.map((skill, idx) => (
-              <span
-                key={idx}
-                className={`${skill.color} neo-border px-2.5 py-1 text-xs font-black text-black shadow-[2px_2px_0px_#000] hover:-translate-y-0.5 transition-transform`}
-              >
-                ✦ {skill.name}
+          {/* Left Column (Avatar + Stats) */}
+          <div className="flex flex-col items-center shrink-0 mb-5 md:mb-0 md:w-56 lg:w-64">
+            <div className="relative mb-3 sm:mb-4 mt-2">
+              <div className="w-24 h-24 sm:w-28 sm:h-28 md:w-36 md:h-36 neo-border-thick bg-gradient-to-tr from-amber-300 to-yellow-200 neo-shadow-lg flex items-center justify-center text-5xl md:text-6xl select-none">
+                🕶️
+              </div>
+              {/* Quirky floating sticker */}
+              <span className="absolute -bottom-2 -right-2 sm:-right-3 neo-border bg-lime-400 text-black text-[10px] sm:text-[11px] font-black px-2 py-0.5 rotate-6 shadow-[2px_2px_0px_#000]">
+                LV.99 🚀
               </span>
-            ))}
+            </div>
+
+            {/* Quick Metrics Bar (Stacked underneath avatar on desktop) */}
+            <div className="w-full grid grid-cols-3 gap-1.5 sm:gap-2 mt-2">
+              <div className="bg-violet-100 neo-border p-2 sm:p-2.5 text-center neo-shadow-sm">
+                <div className="text-base sm:text-lg md:text-xl font-black text-black">5+</div>
+                <div className="text-[9px] sm:text-[10px] font-bold text-neutral-600 uppercase">Years</div>
+              </div>
+              <div className="bg-lime-100 neo-border p-2 sm:p-2.5 text-center neo-shadow-sm">
+                <div className="text-base sm:text-lg md:text-xl font-black text-black">24+</div>
+                <div className="text-[9px] sm:text-[10px] font-bold text-neutral-600 uppercase">Projects</div>
+              </div>
+              <div className="bg-amber-100 neo-border p-2 sm:p-2.5 text-center neo-shadow-sm">
+                <div className="text-base sm:text-lg md:text-xl font-black text-black">1.2k+</div>
+                <div className="text-[9px] sm:text-[10px] font-bold text-neutral-600 uppercase">Commits</div>
+              </div>
+            </div>
           </div>
 
-          {/* Stats Bar */}
-          <div className="w-full grid grid-cols-3 gap-2 sm:gap-3 pt-4 border-t-2 border-dashed border-black">
-            <div className="bg-violet-100 neo-border p-2.5 sm:p-3 text-center neo-shadow-sm">
-              <div className="text-lg sm:text-xl font-black text-black">5+</div>
-              <div className="text-[10px] sm:text-xs font-bold text-neutral-600 uppercase">Years Exp</div>
+          {/* Right Column (Info, Bio, Skills) */}
+          <div className="flex-1 flex flex-col items-center md:items-start text-center md:text-left">
+            {/* Status Badge */}
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-emerald-200 neo-border text-xs font-black text-black neo-shadow-sm mb-3 -rotate-1">
+              <span className="w-2.5 h-2.5 bg-emerald-500 rounded-full border border-black animate-ping" />
+              <span>OPEN FOR OPPORTUNITIES</span>
             </div>
-            <div className="bg-lime-100 neo-border p-2.5 sm:p-3 text-center neo-shadow-sm">
-              <div className="text-lg sm:text-xl font-black text-black">24+</div>
-              <div className="text-[10px] sm:text-xs font-bold text-neutral-600 uppercase">Projects</div>
+
+            {/* Name & Headline */}
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-black mb-1.5">
+              홍길동
+            </h1>
+            <div className="inline-block bg-neutral-100 neo-border px-3 py-0.5 text-xs sm:text-sm font-mono font-bold uppercase tracking-wider mb-3.5">
+              Frontend Engineer · UI/UX Maker
             </div>
-            <div className="bg-amber-100 neo-border p-2.5 sm:p-3 text-center neo-shadow-sm">
-              <div className="text-lg sm:text-xl font-black text-black">1.2k+</div>
-              <div className="text-[10px] sm:text-xs font-bold text-neutral-600 uppercase">Commits</div>
+
+            {/* Bio Description */}
+            <p className="text-neutral-800 text-sm sm:text-base leading-relaxed font-medium max-w-xl break-keep mb-5">
+              사용자 경험(UX)과 기술적 완성도에 집착하는 엔지니어입니다.
+              거친 아이디어를{" "}
+              <span className="bg-yellow-200 px-1 border-b-2 border-black font-bold">
+                견고하고 직관적인 프로덕트
+              </span>
+              로 구현하는 것을 즐깁니다.
+            </p>
+
+            {/* Skills Stickers */}
+            <div className="flex flex-wrap gap-2 justify-center md:justify-start">
+              {skills.map((skill, idx) => (
+                <span
+                  key={idx}
+                  className={`${skill.color} neo-border px-2.5 py-1 text-xs font-black text-black shadow-[2px_2px_0px_#000] hover:-translate-y-0.5 transition-transform`}
+                >
+                  ✦ {skill.name}
+                </span>
+              ))}
             </div>
           </div>
         </section>
 
-        {/* Tab Navigation */}
-        <nav className="w-full grid grid-cols-3 gap-2">
+        {/* Tab Navigation - Responsive buttons */}
+        <nav className="w-full grid grid-cols-3 gap-2 sm:gap-3">
           <button
             onClick={() => setActiveTab("links")}
             type="button"
-            className={`py-2.5 text-xs sm:text-sm font-black neo-border transition-all cursor-pointer ${
+            className={`py-2.5 sm:py-3 px-2 sm:px-4 text-xs sm:text-sm md:text-base font-black neo-border transition-all cursor-pointer ${
               activeTab === "links"
                 ? "bg-black text-white neo-shadow translate-x-[-1px] translate-y-[-1px]"
                 : "bg-white text-black hover:bg-neutral-100 shadow-[2px_2px_0px_#000]"
@@ -230,7 +235,7 @@ export default function Home() {
           <button
             onClick={() => setActiveTab("projects")}
             type="button"
-            className={`py-2.5 text-xs sm:text-sm font-black neo-border transition-all cursor-pointer ${
+            className={`py-2.5 sm:py-3 px-2 sm:px-4 text-xs sm:text-sm md:text-base font-black neo-border transition-all cursor-pointer ${
               activeTab === "projects"
                 ? "bg-black text-white neo-shadow translate-x-[-1px] translate-y-[-1px]"
                 : "bg-white text-black hover:bg-neutral-100 shadow-[2px_2px_0px_#000]"
@@ -241,7 +246,7 @@ export default function Home() {
           <button
             onClick={() => setActiveTab("contact")}
             type="button"
-            className={`py-2.5 text-xs sm:text-sm font-black neo-border transition-all cursor-pointer ${
+            className={`py-2.5 sm:py-3 px-2 sm:px-4 text-xs sm:text-sm md:text-base font-black neo-border transition-all cursor-pointer ${
               activeTab === "contact"
                 ? "bg-black text-white neo-shadow translate-x-[-1px] translate-y-[-1px]"
                 : "bg-white text-black hover:bg-neutral-100 shadow-[2px_2px_0px_#000]"
@@ -251,38 +256,38 @@ export default function Home() {
           </button>
         </nav>
 
-        {/* Tab 1: 주요 링크 */}
+        {/* Tab 1: 주요 링크 (Responsive Grid: 1 col on mobile, 2 cols on tablet/desktop) */}
         {activeTab === "links" && (
-          <section className="w-full flex flex-col gap-3">
+          <section className="w-full grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
             {profileLinks.map((item, idx) => (
               <a
                 key={idx}
                 href={item.url}
                 target={item.url.startsWith("http") ? "_blank" : undefined}
                 rel="noopener noreferrer"
-                className={`group w-full bg-white neo-border neo-shadow neo-press p-4 flex items-center justify-between text-black transition-all ${item.accent}`}
+                className={`group w-full bg-white neo-border neo-shadow neo-press p-3.5 sm:p-4 flex items-center justify-between text-black transition-all ${item.accent}`}
               >
-                <div className="flex items-center gap-3.5 sm:gap-4">
-                  <div className="w-12 h-12 bg-neutral-100 neo-border flex items-center justify-center text-2xl group-hover:scale-105 transition-transform shrink-0">
+                <div className="flex items-center gap-3 sm:gap-3.5 min-w-0">
+                  <div className="w-11 h-11 sm:w-12 sm:h-12 bg-neutral-100 neo-border flex items-center justify-center text-xl sm:text-2xl group-hover:scale-105 transition-transform shrink-0">
                     {item.icon}
                   </div>
-                  <div className="text-left">
-                    <div className="flex items-center gap-2 mb-0.5">
-                      <span className="text-sm sm:text-base font-black text-black">
+                  <div className="text-left min-w-0">
+                    <div className="flex items-center gap-1.5 sm:gap-2 mb-0.5 flex-wrap">
+                      <span className="text-sm sm:text-base font-black text-black truncate">
                         {item.title}
                       </span>
                       <span
-                        className={`${item.tagColor} text-[10px] font-black px-1.5 py-0.2 neo-border`}
+                        className={`${item.tagColor} text-[9px] sm:text-[10px] font-black px-1.5 py-0.2 neo-border shrink-0`}
                       >
                         {item.category}
                       </span>
                     </div>
-                    <p className="text-xs text-neutral-600 font-medium line-clamp-1">
+                    <p className="text-xs text-neutral-600 font-medium truncate">
                       {item.desc}
                     </p>
                   </div>
                 </div>
-                <div className="w-9 h-9 bg-black text-white neo-border flex items-center justify-center font-black text-sm group-hover:bg-yellow-400 group-hover:text-black transition-colors shrink-0">
+                <div className="w-8 h-8 sm:w-9 sm:h-9 bg-black text-white neo-border flex items-center justify-center font-black text-xs sm:text-sm group-hover:bg-yellow-400 group-hover:text-black transition-colors shrink-0 ml-2">
                   ↗
                 </div>
               </a>
@@ -290,110 +295,124 @@ export default function Home() {
           </section>
         )}
 
-        {/* Tab 2: 프로젝트 쇼케이스 */}
+        {/* Tab 2: 프로젝트 쇼케이스 (Responsive Grid: 1 col on mobile, 2 cols on tablet, 3 cols on desktop) */}
         {activeTab === "projects" && (
-          <section className="w-full flex flex-col gap-4">
+          <section className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
             {projects.map((proj, idx) => (
               <div
                 key={idx}
-                className="w-full bg-white neo-border neo-shadow p-5 flex flex-col gap-3 text-left"
+                className="w-full bg-white neo-border neo-shadow p-4 sm:p-5 flex flex-col justify-between gap-3 text-left"
               >
-                <div className="flex items-center justify-between flex-wrap gap-2">
-                  <h3 className="text-base sm:text-lg font-black text-black flex items-center gap-2">
-                    <span>{proj.title}</span>
-                  </h3>
-                  <span
-                    className={`${proj.badgeColor} neo-border px-2 py-0.5 text-xs font-black shadow-[2px_2px_0px_#000]`}
-                  >
-                    {proj.badge}
-                  </span>
-                </div>
-                <p className="text-xs sm:text-sm text-neutral-700 font-medium leading-relaxed">
-                  {proj.desc}
-                </p>
-                <div className="flex flex-wrap gap-1.5">
-                  {proj.tech.map((t, tIdx) => (
+                <div className="flex flex-col gap-2">
+                  <div className="flex items-center justify-between flex-wrap gap-2">
+                    <h3 className="text-base sm:text-lg font-black text-black">
+                      {proj.title}
+                    </h3>
                     <span
-                      key={tIdx}
-                      className="bg-neutral-100 border border-black text-[11px] font-bold px-2 py-0.5 text-neutral-800"
+                      className={`${proj.badgeColor} neo-border px-2 py-0.5 text-[10px] sm:text-xs font-black shadow-[2px_2px_0px_#000]`}
                     >
-                      #{t}
+                      {proj.badge}
                     </span>
-                  ))}
+                  </div>
+                  <p className="text-xs sm:text-sm text-neutral-700 font-medium leading-relaxed">
+                    {proj.desc}
+                  </p>
                 </div>
-                <div className="flex gap-2 pt-2 mt-1 border-t border-dashed border-black">
-                  <a
-                    href={proj.demoUrl}
-                    className="flex-1 text-center bg-yellow-300 hover:bg-yellow-400 neo-border py-1.5 text-xs font-black text-black neo-shadow-sm neo-press"
-                  >
-                    라이브 시연 ↗
-                  </a>
-                  <a
-                    href={proj.githubUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex-1 text-center bg-white hover:bg-neutral-100 neo-border py-1.5 text-xs font-black text-black neo-shadow-sm neo-press"
-                  >
-                    GitHub 소스코드 ↗
-                  </a>
+
+                <div className="flex flex-col gap-3">
+                  <div className="flex flex-wrap gap-1.5">
+                    {proj.tech.map((t, tIdx) => (
+                      <span
+                        key={tIdx}
+                        className="bg-neutral-100 border border-black text-[10px] sm:text-[11px] font-bold px-2 py-0.5 text-neutral-800"
+                      >
+                        #{t}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="flex flex-col sm:flex-row gap-2 pt-2 border-t border-dashed border-black">
+                    <a
+                      href={proj.demoUrl}
+                      className="flex-1 text-center bg-yellow-300 hover:bg-yellow-400 neo-border py-1.5 text-xs font-black text-black neo-shadow-sm neo-press"
+                    >
+                      라이브 시연 ↗
+                    </a>
+                    <a
+                      href={proj.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1 text-center bg-white hover:bg-neutral-100 neo-border py-1.5 text-xs font-black text-black neo-shadow-sm neo-press"
+                    >
+                      GitHub 소스 ↗
+                    </a>
+                  </div>
                 </div>
               </div>
             ))}
           </section>
         )}
 
-        {/* Tab 3: 커피챗 & 연락 */}
+        {/* Tab 3: 커피챗 & 연락 (Responsive Grid: 1 col on mobile, 2 cols on tablet/desktop) */}
         {activeTab === "contact" && (
-          <section className="w-full flex flex-col gap-4">
-            {/* Direct Email Card */}
-            <div className="w-full bg-cyan-100 neo-border-thick neo-shadow p-5 flex flex-col gap-3 text-left">
-              <div className="flex items-center justify-between">
-                <span className="text-xs font-black bg-black text-white px-2 py-0.5">
-                  DIRECT EMAIL
-                </span>
-                <span className="text-xl">✉️</span>
+          <section className="w-full flex flex-col gap-4 sm:gap-5">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {/* Direct Email Card */}
+              <div className="w-full bg-cyan-100 neo-border-thick neo-shadow p-4 sm:p-5 flex flex-col justify-between gap-3 text-left">
+                <div className="flex flex-col gap-2">
+                  <div className="flex items-center justify-between">
+                    <span className="text-[10px] sm:text-xs font-black bg-black text-white px-2 py-0.5">
+                      DIRECT EMAIL
+                    </span>
+                    <span className="text-xl">✉️</span>
+                  </div>
+                  <h3 className="text-base sm:text-lg font-black text-black break-all">
+                    contact@example.com
+                  </h3>
+                  <p className="text-xs text-neutral-700 font-medium">
+                    프로젝트 제안, 채용 논의, 외주 및 협업 문의는 메일로 언제든 편하게 연락주세요.
+                  </p>
+                </div>
+                <div className="flex flex-col sm:flex-row gap-2 pt-1">
+                  <button
+                    type="button"
+                    onClick={() => handleCopyEmail("contact@example.com")}
+                    className="flex-1 bg-white hover:bg-yellow-200 neo-border py-2 text-xs font-black neo-shadow-sm neo-press text-black cursor-pointer"
+                  >
+                    📋 이메일 복사
+                  </button>
+                  <a
+                    href="mailto:contact@example.com"
+                    className="flex-1 text-center bg-black hover:bg-neutral-800 text-white neo-border py-2 text-xs font-black neo-shadow-sm neo-press"
+                  >
+                    메일 보내기 ↗
+                  </a>
+                </div>
               </div>
-              <h3 className="text-base sm:text-lg font-black text-black">
-                contact@example.com
-              </h3>
-              <p className="text-xs text-neutral-700 font-medium">
-                프로젝트 제안, 채용 논의, 외주 및 협업 문의는 메일로 언제든 편하게 연락주세요.
-              </p>
-              <div className="flex gap-2 pt-1">
-                <button
-                  type="button"
-                  onClick={() => handleCopyEmail("contact@example.com")}
-                  className="flex-1 bg-white hover:bg-yellow-200 neo-border py-2 text-xs font-black neo-shadow-sm neo-press text-black cursor-pointer"
-                >
-                  📋 이메일 주소 복사하기
-                </button>
-                <a
-                  href="mailto:contact@example.com"
-                  className="flex-1 text-center bg-black hover:bg-neutral-800 text-white neo-border py-2 text-xs font-black neo-shadow-sm neo-press"
-                >
-                  메일 보내기 ↗
-                </a>
+
+              {/* Coffee Chat Card */}
+              <div className="w-full bg-pink-100 neo-border neo-shadow p-4 sm:p-5 flex flex-col justify-between gap-2 text-left">
+                <div className="flex flex-col gap-2">
+                  <div className="flex items-center justify-between">
+                    <span className="text-[10px] sm:text-xs font-black bg-pink-400 text-black neo-border px-2 py-0.5">
+                      ☕ COFFEE CHAT
+                    </span>
+                    <span className="text-xl">🍪</span>
+                  </div>
+                  <h4 className="text-sm sm:text-base font-black text-black">
+                    가벼운 기술 토크나 커피챗도 환영합니다!
+                  </h4>
+                  <p className="text-xs text-neutral-700 font-medium leading-relaxed">
+                    프론트엔드 최신 생태계, 디자인 시스템, 아키텍처 고민 등 가벼운 온라인/오프라인 커피챗을 제안해주세요.
+                  </p>
+                </div>
+                <div className="inline-block self-start bg-white neo-border px-3 py-1 text-[11px] font-bold text-neutral-800 mt-2">
+                  📍 온/오프라인 모두 가능
+                </div>
               </div>
             </div>
 
-            {/* Coffee Chat Card */}
-            <div className="w-full bg-pink-100 neo-border neo-shadow p-5 flex flex-col gap-2 text-left">
-              <div className="flex items-center justify-between">
-                <span className="text-xs font-black bg-pink-400 text-black neo-border px-2 py-0.5">
-                  ☕ COFFEE CHAT
-                </span>
-                <span className="text-lg">🍪</span>
-              </div>
-              <h4 className="text-sm font-black text-black">
-                가벼운 기술 토크나 커피챗도 환영합니다!
-              </h4>
-              <p className="text-xs text-neutral-700 font-medium leading-relaxed">
-                프론트엔드 최신 생태계, 디자인 시스템, 아키텍처 고민 등 가벼운 온라인/오프라인 커피챗을 제안해주세요.
-              </p>
-            </div>
-
-            {/* Social Grid */}
-            <div className="grid grid-cols-4 gap-2">
+            {/* Social Grid (2 cols on mobile, 4 cols on sm/tablet/desktop) */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3.5">
               {[
                 { name: "GitHub", icon: "🐙", url: "https://github.com", bg: "bg-white" },
                 { name: "Twitter / X", icon: "🐦", url: "https://x.com", bg: "bg-white" },
@@ -405,23 +424,23 @@ export default function Home() {
                   href={s.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`${s.bg} neo-border neo-shadow-sm neo-press p-2.5 flex flex-col items-center justify-center gap-1 hover:bg-yellow-200 transition-colors`}
+                  className={`${s.bg} neo-border neo-shadow-sm neo-press p-3 sm:p-4 flex flex-col items-center justify-center gap-1.5 hover:bg-yellow-200 transition-colors`}
                 >
-                  <span className="text-xl">{s.icon}</span>
-                  <span className="text-[10px] font-black text-black">{s.name}</span>
+                  <span className="text-xl sm:text-2xl">{s.icon}</span>
+                  <span className="text-xs font-black text-black">{s.name}</span>
                 </a>
               ))}
             </div>
           </section>
         )}
 
-        {/* Interactive Cheer Card */}
-        <section className="w-full bg-yellow-300 neo-border-thick neo-shadow p-5 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+        {/* Interactive Cheer Card (Responsive flex layout) */}
+        <section className="w-full bg-yellow-300 neo-border-thick neo-shadow p-4 sm:p-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
           <div>
-            <div className="inline-block bg-black text-yellow-300 text-[10px] font-black px-2 py-0.5 uppercase mb-1">
+            <div className="inline-block bg-black text-yellow-300 text-[9px] sm:text-[10px] font-black px-2 py-0.5 uppercase mb-1">
               ✦ COMMUNITY CHEER
             </div>
-            <h3 className="text-sm sm:text-base font-black text-black">
+            <h3 className="text-sm sm:text-base md:text-lg font-black text-black">
               프로필이 맘에 드셨다면 응원해주세요!
             </h3>
             <p className="text-xs text-neutral-800 font-medium">
@@ -431,11 +450,11 @@ export default function Home() {
           <button
             onClick={handleCheer}
             type="button"
-            className={`bg-white hover:bg-neutral-100 text-black neo-border neo-shadow neo-press px-5 py-2.5 font-black text-sm flex items-center gap-2 cursor-pointer shrink-0 transition-transform ${
-              isCheered ? "scale-110 bg-rose-200" : ""
+            className={`w-full sm:w-auto justify-center bg-white hover:bg-neutral-100 text-black neo-border neo-shadow neo-press px-5 py-2.5 font-black text-xs sm:text-sm flex items-center gap-2 cursor-pointer shrink-0 transition-transform ${
+              isCheered ? "scale-105 sm:scale-110 bg-rose-200" : ""
             }`}
           >
-            <span className="text-lg">🔥</span>
+            <span className="text-base sm:text-lg">🔥</span>
             <span>응원하기 +1</span>
           </button>
         </section>
