@@ -13,17 +13,23 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "MyLink - 마이링크",
-  description: "나만의 모든 링크를 한곳에서 모아보는 마이링크 서비스",
+  title: "홍길동 (Hong Gildong) | MyLink ✦ Neobrutalism Portfolio",
+  description: "개발자 홍길동의 네오브루탈리즘 스타일 올인원 링크 & 프로젝트 허브",
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html
       lang="ko"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col selection:bg-amber-300 selection:text-black">
+        {children}
+      </body>
     </html>
   );
 }
